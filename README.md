@@ -1,8 +1,7 @@
 ### Demo
 
-![alt text](https://github.com/anhnt4288/celo-gym-shop/blob/master/demo.png)
 
-<p> Gym shop is an e-commerce platform powered by Blockchain Technology. Built with Solidity, you buy and sell Gym equipments and materials, and pay with Celo Cryptocurrency. You also place your service as a Gym trainer and get hired. Finally, in an upcoming feature of Gym shop, you get rewarded for exercising and keeping fit.</p>
+<p> Gym shop is an e-commerce platform powered by Blockchain Technology. Built with Solidity, you buy and sell Gym equipments and materials, and pay with Celo Cryptocurrency.</p>
 
 ### Key Features
 
