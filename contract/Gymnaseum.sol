@@ -142,6 +142,16 @@ contract Gymnaseum {
     );
     products[_index].sold++;
   }
+
+
+   // edit a service rate
+  function editServiceRate(
+   uint _index,
+   uint _rate
+  ) public {
+
+    ServiceContract.editServiceRate(_index, _rate);
+  }
   
   function getProductsLength() public view returns (uint) {
     return (productsLength);

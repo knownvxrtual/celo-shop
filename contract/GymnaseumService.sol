@@ -8,6 +8,7 @@ interface ServiceInterface {
   function readServiceHire(uint _serviceIndex, uint _hireIndex) external view returns (address hirer, uint timestamp);
   function writeService(string calldata _name, string calldata _image, string calldata _description, string calldata _location, string calldata _contact, uint _rate) external;
   function hireService(uint _index) external;
+  function editServiceRate(uint _index, uint _rate) external;
 }
 
 interface IERC20Token {
@@ -60,6 +61,19 @@ contract GymnaseumService {
     uint amount,
     uint timestamp
   );
+
+   event editServiceEvent(
+    address user,
+    uint rate,
+    uint timestamp
+  );
+
+
+  modifier isServiceOwner(uint _index){
+    Service storage service = services[_index];
+    require(tx.origin == service.user, "Only the owner of this service can call this function");
+    _;
+  }
 
   function writeService(
     string memory _name,
@@ -149,5 +163,12 @@ contract GymnaseumService {
 
   function readServicesLength() external view returns (uint) {
     return (servicesLength);
+  }
+
+  function editServiceRate(uint _index, uint _rate) isServiceOwner(_index) external {
+       Service storage service = services[_index];
+       require(service.user != address(0), "This service does not exist");
+       service.rate = _rate;
+       emit editServiceEvent(service.user, service.rate, block.timestamp);
   }
 }
