@@ -39,12 +39,11 @@ const connectCeloWallet = async function () {
 
 async function paymentApproval(_price) {
   const ERCContract = new kit.web3.eth.Contract(erc20Abi, erc20Address)
-
-  const result = await ERCContract.methods.approve(GContractAddress, _price).send({
+  await ERCContract.methods.approve(GContractAddress, _price).send({
     from: kit.defaultAccount
   })
 
-  return result
+
 }
 
 
@@ -93,7 +92,7 @@ const getServiceHires = async function (serviceIndex, hiresLength) {
     });
     _hires.push(_hire)
   }
-  return await Promise.all(_hires)
+ await Promise.all(_hires)
 }
 
 const getServices = async function() {
